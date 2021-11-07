@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/maykemoreira/nodejs-clean-architecture#readme",
   "devDependencies": {
-    "@shelf/jest-mongodb": "^2.1.0",
+    "@shelf/jest-mongodb": "^2.0.3",
     "@types/bcrypt": "^5.0.0",
     "@types/jest": "^26.0.15",
     "@types/mongodb": "^4.0.7",
@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
-    "mongodb": "^4.1.4",
+    "mongodb": "^3.7.2",
     "validator": "^13.6.0"
   }
 }
