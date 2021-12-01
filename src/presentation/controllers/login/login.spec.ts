@@ -3,7 +3,7 @@ import {
   HttpRequest,
   Authentication
 } from './login-protocols'
-import { badRequest, serverError, unathorized, ok } from '../../helpers/http-helper'
+import { badRequest, serverError, unathorized, ok } from '../../helpers/http/http-helper'
 import { MissingParamError } from '../../errors'
 import { Validation } from '../signup/signup-protocols'
 
