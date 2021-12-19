@@ -73,7 +73,6 @@ describe('SignUp Controller', () => {
       password: 'any_password'
     })
   })
-
   test('Should return 500 if AddAccount throws ', async () => {
     const { sut, addAccountStub } = makeSut()
     jest.spyOn(addAccountStub, 'add').mockImplementationOnce(async () => {
@@ -82,13 +81,11 @@ describe('SignUp Controller', () => {
     const httpResponse = await sut.handle(makeFakeRequest())
     expect(httpResponse).toEqual(serverError(new ServerError(null)))
   })
-
   test('Should return 200 if valid data is provided', async () => {
     const { sut } = makeSut()
     const httpResponse = await sut.handle(makeFakeRequest())
     expect(httpResponse).toEqual(ok(makeFakeAccount()))
   })
-
   test('Should return 400 if Validation returns an error', async () => {
     const { sut, validationStub } = makeSut()
     jest.spyOn(validationStub, 'validate').mockReturnValue(new MissingParamError('any_field'))
