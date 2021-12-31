@@ -5,3 +5,4 @@ globalConfig.json
 data
 .vscode
 lessons 
+!src/data
