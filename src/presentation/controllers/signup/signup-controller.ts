@@ -7,7 +7,7 @@ export class SignUpController implements Controller {
     private readonly addAccount: AddAccount,
     private readonly validation: Validation,
     private readonly authentication: Authentication
-  ) {}
+  ) { }
 
   async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
@@ -30,7 +30,6 @@ export class SignUpController implements Controller {
       })
       return ok({ accessToken })
     } catch (error) {
-      console.error(error)
       return serverError(error)
     }
   }
