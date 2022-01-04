@@ -6,3 +6,4 @@ data
 .vscode
 lessons 
 !src/data
+files-path.js
