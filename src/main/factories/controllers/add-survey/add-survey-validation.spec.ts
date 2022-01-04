@@ -1,0 +1,15 @@
+import { RequiredFieldValidation, ValidationComposite } from '../../../../validation/validators'
+import { makeAddSurveyValidation } from './add-survey-validation'
+import { Validation } from '../../../../presentation/protocols/validation'
+jest.mock('../../../../validation/validators/validation-composite')
+
+describe('SignUpValidation Factory', () => {
+  test('Should call ValidationComposite with all validations', () => {
+    makeAddSurveyValidation()
+    const validations: Validation[] = []
+    for (const field of ['question', 'anwsers']) {
+      validations.push(new RequiredFieldValidation(field))
+    }
+    expect(ValidationComposite).toHaveBeenCalledWith(validations)
+  })
+})
