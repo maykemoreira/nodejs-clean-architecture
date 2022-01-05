@@ -24,7 +24,7 @@ describe('Login Routes', () => {
         .post('/api/surveys')
         .send({
           question: 'Question',
-          anwsers: [{
+          answers: [{
             answer: 'Answer 1',
             image: 'http://image-name.com'
           },
