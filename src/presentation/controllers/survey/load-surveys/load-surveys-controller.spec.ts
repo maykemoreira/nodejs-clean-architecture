@@ -42,8 +42,9 @@ interface SutTypes {
 
 const makeSut = (): SutTypes => {
   const loadSurveysStub = makeLoadSurveys()
+  const sut = new LoadSurveysController(loadSurveysStub)
   return {
-    sut: new LoadSurveysController(loadSurveysStub),
+    sut,
     loadSurveysStub
   }
 }
