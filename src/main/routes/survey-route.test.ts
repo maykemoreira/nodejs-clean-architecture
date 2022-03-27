@@ -1,9 +1,9 @@
+import { MongoHelper } from '@/main/../infra/db/mongodb/helpers/mongo-helper'
+import app from '@/main/config/app'
+import env from '@/main/config/env'
 import request from 'supertest'
-import { MongoHelper } from '../../infra/db/mongodb/helpers/mongo-helper'
-import app from '../config/app'
 import { Collection } from 'mongodb'
 import { sign } from 'jsonwebtoken'
-import env from '../config/env'
 
 let surveyCollection: Collection
 let accountCollection: Collection
@@ -92,7 +92,7 @@ describe('Login Routes', () => {
   })
 
   describe('GET /surveys', () => {
-    test('Should return 403 on add survey success without access token', async () => {
+    test('Should return 403 on load survey success without access token', async () => {
       await request(app)
         .get('/api/surveys')
         .expect(403)
