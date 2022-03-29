@@ -71,6 +71,7 @@ describe('loadAll()', () => {
     expect(surveys.length).toBe(2)
     expect(surveys[0].question).toBe('any_question')
     expect(surveys[1].question).toBe('other_question')
+    expect(surveys[0].id).toBeTruthy()
   })
 
   test('Should load empty list ', async () => {
@@ -95,5 +96,6 @@ describe('loadById()', () => {
     const sut = makeSut()
     const survey = await sut.loadById(res.ops[0]._id)
     expect(survey).toBeTruthy()
+    expect(survey.id).toBeTruthy()
   })
 })
