@@ -28,7 +28,6 @@ export class SaveSurveyResultController implements Controller {
         date: new Date(),
         answer
       })
-      console.log(surveyResult)
       return ok(surveyResult)
     } catch (error) {
       return serverError(error)
