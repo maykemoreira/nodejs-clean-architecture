@@ -2,7 +2,7 @@ import { LoginController } from './login-controller'
 import {
   HttpRequest,
   Authentication,
-  AuthenticationModel,
+  AuthenticationParams,
   Validation
 } from './login-controller-protocols'
 import { badRequest, serverError, unathorized, ok } from '@/presentation/helpers/http/http-helper'
@@ -25,7 +25,7 @@ const makeValidation = (): Validation => {
 
 const makeAuthentication = (): Authentication => {
   class AuthenticationStub implements Authentication {
-    async auth (authentication: AuthenticationModel): Promise<string> {
+    async auth (authentication: AuthenticationParams): Promise<string> {
       return await new Promise(resolve => resolve('any_token'))
     }
   }
