@@ -4,7 +4,7 @@ import { mockSaveSurveyModel } from '@/domain/test'
 export const mockSaveSurveyResultRepository = (): SaveSurveyResultRepository => {
   class SaveSurveyResultRepositoryStub implements SaveSurveyResultRepository {
     async save (data: SaveSurveyResultParams): Promise<SurveyResultModel> {
-      return await new Promise(resolve => resolve(mockSaveSurveyModel()))
+      return await Promise.resolve(mockSaveSurveyModel())
     }
   }
   return new SaveSurveyResultRepositoryStub()
