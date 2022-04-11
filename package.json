@@ -22,7 +22,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "GPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/maykemoreira/nodejs-clean-architecture/issues"
   },
