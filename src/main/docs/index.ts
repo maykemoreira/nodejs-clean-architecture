@@ -3,7 +3,7 @@ import { badRequest, serverError, unauthorized, notFound, forbidden } from './co
 import {
   accountSchema, errorSchema, loginParamsSchema,
   surveyAnswerSchema, surveysSchema, surveySchema,
-  apiKeyAuthSchema, signUpParamsSchema
+  apiKeyAuthSchema, signUpParamsSchema, addSurveyParamsSchema
 } from './schemas'
 
 export default {
@@ -37,7 +37,8 @@ export default {
     surveys: surveysSchema,
     survey: surveySchema,
     surveyAnswer: surveyAnswerSchema,
-    signUpParams: signUpParamsSchema
+    signUpParams: signUpParamsSchema,
+    addSurveyParams: addSurveyParamsSchema
   },
   components: {
     securitySchemes: {
