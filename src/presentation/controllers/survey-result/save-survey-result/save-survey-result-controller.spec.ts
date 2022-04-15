@@ -7,7 +7,7 @@ import {
   SaveSurveyResult
 } from './save-survey-result-controller-protocols'
 import { mockSaveSurveyResult } from '@/presentation/test'
-import { mockLoadSurveyById, throwError, mockSaveSurveyModel } from '@/domain/test'
+import { mockLoadSurveyById, throwError, mockSurveyResultModel } from '@/domain/test'
 import MockDate from 'mockdate'
 
 const mockRequest = (): HttpRequest => ({
@@ -102,6 +102,6 @@ describe('SaveSurveyResult Controller', () => {
   test('Should return 200 on success', async () => {
     const { sut } = makeSut()
     const httpResponse = await sut.handle(mockRequest())
-    expect(httpResponse).toEqual(ok(mockSaveSurveyModel()))
+    expect(httpResponse).toEqual(ok(mockSurveyResultModel()))
   })
 })

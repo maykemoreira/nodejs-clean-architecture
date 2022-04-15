@@ -1,7 +1,7 @@
 import { DbSaveSurveyResult } from './db-save-survey-result'
 import { SaveSurveyResultRepository } from './db-save-survey-result-protocols'
 import { mockSaveSurveyResultRepository } from '@/data/test'
-import { mockSaveSurveyResultParams, mockSaveSurveyModel } from '@/domain/test'
+import { mockSaveSurveyResultParams, mockSurveyResultModel } from '@/domain/test'
 import MockDate from 'mockdate'
 
 type SutTypes = {
@@ -41,13 +41,13 @@ describe('DbSaveSurveyResult UseCase', () => {
     jest.spyOn(saveSurveyResultRepositoryStub, 'save').mockReturnValueOnce(
       Promise.reject(new Error()
       ))
-    const promise = sut.save(mockSaveSurveyModel())
+    const promise = sut.save(mockSaveSurveyResultParams())
     await expect(promise).rejects.toThrow()
   })
 
   test('Should return SurveyResult on success', async () => {
     const { sut } = makeSut()
     const surveyResultData = await sut.save(mockSaveSurveyResultParams())
-    expect(surveyResultData).toEqual(mockSaveSurveyModel())
+    expect(surveyResultData).toEqual(mockSurveyResultModel())
   })
 })
