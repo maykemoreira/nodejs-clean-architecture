@@ -2,6 +2,7 @@ import { DbLoadSurveyResult } from './db-load-survey-result'
 import { LoadSurveyResultRepository } from '@/data/usecases/survey-result/load-survey-result/db-load-survey-result-protocols'
 import { mockLoadSurveyResultRepository } from '@/data/test'
 import { throwError, mockSurveyResultModel } from '@/domain/test'
+import MockDate from 'mockdate'
 
 type SutTypes = {
   sut: DbLoadSurveyResult
@@ -15,6 +16,14 @@ const makeSut = (): SutTypes => {
     loadSurveyResultRepositoryStub
   }
 }
+
+beforeAll(() => {
+  MockDate.set(new Date())
+})
+
+afterAll(() => {
+  MockDate.reset()
+})
 
 describe('DbLoadSurveyRestul UseCase', () => {
   test('Should call LoadSurveyResultRepository', async () => {
