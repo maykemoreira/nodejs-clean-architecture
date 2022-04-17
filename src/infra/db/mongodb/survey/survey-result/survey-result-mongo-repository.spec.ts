@@ -146,4 +146,10 @@ describe('loadBySurveyId', () => {
     expect(surveyResult.answers[2].count).toBe(0)
     expect(surveyResult.answers[2].percent).toBe(0)
   })
+  test('Should return null if there is no survey result', async () => {
+    const sut = makeSut()
+    const survey = await makeSurvey()
+    const surveyResult = await sut.loadBySurveyId(survey.id)
+    expect(surveyResult).toBeNull()
+  })
 })
