@@ -146,18 +146,4 @@ describe('loadBySurveyId', () => {
     expect(surveyResult.answers[2].count).toBe(0)
     expect(surveyResult.answers[2].percent).toBe(0)
   })
-
-  // test('Should load survey result', async () => {
-  //   const sut = makeSut()
-  //   const survey = await makeSurvey()
-  //   const surveyResult = await sut.loadBySurveyId(survey.id)
-  //   expect(surveyResult).toBeTruthy()
-  //   expect(surveyResult.surveyId).toEqual(survey.id)
-  //   expect(surveyResult.answers[0].count).toBe(0)
-  //   expect(surveyResult.answers[0].percent).toBe(0)
-  //   expect(surveyResult.answers[1].count).toBe(0)
-  //   expect(surveyResult.answers[1].percent).toBe(0)
-  //   expect(surveyResult.answers[2].count).toBe(0)
-  //   expect(surveyResult.answers[2].percent).toBe(0)
-  // })
 })
