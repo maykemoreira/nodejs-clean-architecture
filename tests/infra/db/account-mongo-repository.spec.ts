@@ -27,12 +27,8 @@ describe('AccountMongoRepository', () => {
     test('Should return an account on add success', async () => {
       const sut = makeSut()
       const addAccountParams = mockAddAccountParams()
-      const account = await sut.add(addAccountParams)
-      expect(account).toBeTruthy()
-      expect(account.name).toBe(addAccountParams.name)
-      expect(account.email).toBe(addAccountParams.email)
-      expect(account.password).toBe(addAccountParams.password)
-      expect(account.id).toBeTruthy()
+      const isValid = await sut.add(addAccountParams)
+      expect(isValid).toBe(true)
     })
   })
 
@@ -44,7 +40,6 @@ describe('AccountMongoRepository', () => {
       const account = await sut.loadByEmail(addAccountParams.email)
       expect(account).toBeTruthy()
       expect(account.name).toBe(addAccountParams.name)
-      expect(account.email).toBe(addAccountParams.email)
       expect(account.password).toBe(addAccountParams.password)
       expect(account.id).toBeTruthy()
     })
@@ -95,9 +90,6 @@ describe('AccountMongoRepository', () => {
       })
       const account = await sut.loadByToken(accessToken)
       expect(account).toBeTruthy()
-      expect(account.name).toBe(name)
-      expect(account.email).toBe(email)
-      expect(account.password).toBe(password)
       expect(account.id).toBeTruthy()
     })
 
@@ -112,9 +104,6 @@ describe('AccountMongoRepository', () => {
       })
       const account = await sut.loadByToken(accessToken, 'admin')
       expect(account).toBeTruthy()
-      expect(account.name).toBe(name)
-      expect(account.email).toBe(email)
-      expect(account.password).toBe(password)
       expect(account.id).toBeTruthy()
     })
 
@@ -140,10 +129,6 @@ describe('AccountMongoRepository', () => {
         role: 'admin'
       })
       const account = await sut.loadByToken(accessToken)
-      expect(account).toBeTruthy()
-      expect(account.name).toBe(name)
-      expect(account.email).toBe(email)
-      expect(account.password).toBe(password)
       expect(account.id).toBeTruthy()
     })
 
