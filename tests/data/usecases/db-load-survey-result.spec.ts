@@ -61,12 +61,12 @@ describe('DbLoadSurveyRestul UseCase', () => {
     const { sut, loadSurveyResultRepositorySpy, loadSurveyByIdRepositorySpy } = makeSut()
     loadSurveyResultRepositorySpy.surveyResultModel = null
     const surveyResult = await sut.load(surveyId, accountId)
-    const { surveyModel } = loadSurveyByIdRepositorySpy
+    const { result } = loadSurveyByIdRepositorySpy
     expect(surveyResult).toEqual({
-      date: surveyModel.date,
-      surveyId: surveyModel.id,
-      question: surveyModel.question,
-      answers: surveyModel.answers.map(answer => Object.assign({}, answer, { count: 0, percent: 0, isCurrentAccountAnswer: false }))
+      date: result.date,
+      surveyId: result.id,
+      question: result.question,
+      answers: result.answers.map(answer => Object.assign({}, answer, { count: 0, percent: 0, isCurrentAccountAnswer: false }))
     })
   })
 
