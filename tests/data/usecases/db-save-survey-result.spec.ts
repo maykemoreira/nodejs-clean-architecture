@@ -63,6 +63,6 @@ describe('DbSaveSurveyResult UseCase', () => {
       loadSurveyResultRepositorySpy
     } = makeSut()
     const surveyResultData = await sut.save(mockSaveSurveyResultParams())
-    expect(surveyResultData).toEqual(loadSurveyResultRepositorySpy.surveyResultModel)
+    expect(surveyResultData).toEqual(loadSurveyResultRepositorySpy.result)
   })
 })
