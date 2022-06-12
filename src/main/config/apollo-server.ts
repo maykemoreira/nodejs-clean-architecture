@@ -3,6 +3,7 @@ import { Express } from 'express'
 import typeDefs from '@/main/graphql/type-defs'
 import resolvers from '@/main/graphql/resolvers'
 import { GraphQLError } from 'graphql'
+import schemaDirectives from '@/main/graphql/directives'
 
 const checkError = (error: GraphQLError, errorName: string): boolean => {
   return [error.name, error.originalError?.name].some(name => name === errorName)
@@ -27,6 +28,8 @@ export default (app: Express): void => {
   const server = new ApolloServer({
     resolvers,
     typeDefs,
+    schemaDirectives,
+    context: ({ req }) => ({ req }),
     plugins: [{
       requestDidStart: () => ({
         willSendResponse: ({ response, errors }) => {
