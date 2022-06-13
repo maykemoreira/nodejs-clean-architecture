@@ -108,5 +108,34 @@ describe('SurveyResult GraphQL', () => {
         isCurrentAccountAnswer: false
       }])
     })
+
+    test('Should return Access denied if no token is provided', async () => {
+      const surveyRes = await surveyCollection.insertOne({
+        question: 'Question',
+        answers: [{
+          answer: 'Answer 1',
+          count: 0,
+          percent: 0,
+          isCurrentAccountAnswer: false
+        },
+        {
+          answer: 'Answer 2',
+          count: 0,
+          percent: 0,
+          isCurrentAccountAnswer: false
+        }],
+        date: new Date()
+      })
+      const { query } = createTestClient({
+        apolloServer
+      })
+      const res: any = await query(surveyResultQuery, {
+        variables: {
+          surveyId: surveyRes.ops[0]._id.toString()
+        }
+      })
+      expect(res.data).toBeFalsy()
+      expect(res.errors[0].message).toBe('Access denied')
+    })
   })
 })
