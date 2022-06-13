@@ -8,7 +8,7 @@ import { sign } from 'jsonwebtoken'
 let surveyCollection: Collection
 let accountCollection: Collection
 
-const makeAccessToken = async (): Promise<string> => {
+const mockAccessToken = async (): Promise<string> => {
   const res = await accountCollection.insertOne({
     name: 'any_name',
     email: 'any_email@mail.com',
@@ -54,7 +54,7 @@ describe('Login Routes', () => {
     })
 
     test('Should return 200 on save survey result with accessToken', async () => {
-      const accessToken = await makeAccessToken()
+      const accessToken = await mockAccessToken()
       const res = await surveyCollection.insertOne({
         question: 'Question',
         answers: [{
@@ -83,7 +83,7 @@ describe('Login Routes', () => {
         .expect(403)
     })
     test('Should return 200 on load survey result with accessToken', async () => {
-      const accessToken = await makeAccessToken()
+      const accessToken = await mockAccessToken()
       const res = await surveyCollection.insertOne({
         question: 'Question',
         answers: [{
