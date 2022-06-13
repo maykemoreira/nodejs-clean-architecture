@@ -68,8 +68,8 @@ describe('SurveyMongoRepository', () => {
         date: new Date()
       })
       await sut.save({
-        surveyId: new ObjectId(survey.id),
-        accountId: new ObjectId(accountId),
+        surveyId: survey.id,
+        accountId: accountId,
         answer: survey.answers[1].answer,
         date: new Date()
       })
