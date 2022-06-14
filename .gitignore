@@ -7,3 +7,4 @@ lessons
 data
 !src/data
 !tests/data
+.husky

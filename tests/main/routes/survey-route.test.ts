@@ -14,10 +14,10 @@ const makeAccessToken = async (): Promise<string> => {
     email: 'any_email@mail.com',
     password: 'any_password'
   })
-  const id = res.ops[0]._id
+  const id = res.insertedId.toHexString()
   const accessToken = sign({ id }, env.jwtSecret)
   await accountCollection.updateOne({
-    _id: id
+    _id: res.insertedId
   },
   {
     $set: {
@@ -37,9 +37,9 @@ describe('Login Routes', () => {
   })
 
   beforeEach(async () => {
-    surveyCollection = await MongoHelper.getCollection('surveys')
+    surveyCollection = MongoHelper.getCollection('surveys')
     await surveyCollection.deleteMany({})
-    accountCollection = await MongoHelper.getCollection('accounts')
+    accountCollection = MongoHelper.getCollection('accounts')
     await accountCollection.deleteMany({})
   })
   describe('POST /surveys', () => {
@@ -65,10 +65,10 @@ describe('Login Routes', () => {
         password: 'any_password',
         role: 'admin'
       })
-      const id = res.ops[0]._id
+      const id = res.insertedId.toHexString()
       const accessToken = sign({ id }, env.jwtSecret)
       await accountCollection.updateOne({
-        _id: id
+        _id: res.insertedId
       },
       {
         $set: {
