@@ -1,10 +1,12 @@
 import { MongoHelper } from '@/infra/db/mongodb/mongo-helper'
 import { Collection } from 'mongodb'
 import env from '@/main/config/env'
-import app from '@/main/config/app'
+import { setupApp } from '@/main/config/app'
 import request from 'supertest'
 import { sign } from 'jsonwebtoken'
+import { Express } from 'express'
 
+let app: Express
 let accountCollection: Collection
 let surveyCollection: Collection
 
@@ -29,6 +31,7 @@ const mockAccessToken = async (): Promise<string> => {
 
 describe('SurveyResult GraphQL', () => {
   beforeAll(async () => {
+    app = await setupApp()
     await MongoHelper.connect(process.env.MONGO_URL)
   })
 
